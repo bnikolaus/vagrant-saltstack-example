@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "client1" do |server|
     server.vm.host_name = "client1"
-    server.vm.network "private_network", ip: "192.168.250.101"
+    server.vm.network "private_network", ip: "192.168.250.101" 
     server.vm.provision "shell", inline: "sudo bash"
     server.vm.provision "shell", inline: "service iptables stop"
     server.vm.provision "shell", inline: "rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm"
@@ -44,17 +44,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     server.vm.provision "shell", inline: "echo 'client1' >> /etc/salt/minion_id"
     server.vm.provision "shell", inline: "service salt-minion start"
   end
-
-  config.vm.define "client2" do |server|
-    server.vm.host_name = "client2"
-    server.vm.network "private_network", ip: "192.168.250.102"
-    server.vm.provision "shell", inline: "sudo bash"
-    server.vm.provision "shell", inline: "service iptables stop"
-    server.vm.provision "shell", inline: "rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm"
-    server.vm.provision "shell", inline: "echo '192.168.250.100 salt' >> /etc/hosts"
-    server.vm.provision "shell", inline: "yum install salt-minion -y"
-    server.vm.provision "shell", inline: "chkconfig salt-minion on"
-    server.vm.provision "shell", inline: "echo 'client2' >> /etc/salt/minion_id"
-    server.vm.provision "shell", inline: "service salt-minion start"
-  end
 end
+
+

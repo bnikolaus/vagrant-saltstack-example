@@ -28,7 +28,9 @@ Connect to the systems:
 
 - `vagrant ssh master`
 - `vagrant ssh client1`
-- `vagrant ssh client2`
+- `vagrant ssh client2` Two is having issues right now
+
+
 
 To remove the example:
 
